@@ -480,11 +480,11 @@ EOF
         
     patchflatpaksteam(){
         cd $FlatpakSteamInstallDir/
-        if grep -q -F "export LD_AUDIT=$HOME/.var/app/com.valvesoftware.Steam/.local/share/SLSsteam/library-inject.so:$HOME/.var/app/com.valvesoftware.Steam/.local/share/SLSsteam/SLSsteam.so" "steam.sh"; then
-            echo  "Steam Runner Script Already Patched ,Skipping..."
-        else
-            sed -i '10a export LD_AUDIT=$HOME/.var/app/com.valvesoftware.Steam/.local/share/SLSsteam/library-inject.so:$HOME/.var/app/com.valvesoftware.Steam/.local/share/SLSsteam/SLSsteam.so' steam.sh
-        fi
+        if [ -f "steam.sh" ]; then
+            mv steam.sh steam.sh.bak
+        	wget -O steam.sh "$Headcrab_Flatpak" &> /dev/null
+			chmod +x steam.sh
+		fi
             echo "SLSSteamInstallType: Flatpak"
         }
 
