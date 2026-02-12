@@ -20,7 +20,8 @@ set -eu
     Headcrab_Downgrade_URL="http://localhost:1666/"
 	LinuxClientManifest="https://raw.githubusercontent.com/Deadboy666/SteamTracking/refs/heads/headcrab/ClientManifest/steam_client_ubuntu12"
     DeckClientManifest="https://raw.githubusercontent.com/Deadboy666/SteamTracking/refs/heads/headcrab/ClientManifest/steam_client_steamdeck_stable_ubuntu12"
-	Steamos_Native_LaunchScript="https://raw.githubusercontent.com/Deadboy666/h3adcr-b/refs/heads/testing/steam.sh"
+	Headcrab_Native="https://raw.githubusercontent.com/Deadboy666/h3adcr-b-modul3s/refs/heads/main/headcrab_native.sh"
+	Headcrab_Flatpak="https://raw.githubusercontent.com/Deadboy666/h3adcr-b-modul3s/refs/heads/main/headcrab_flatpak.sh"
     dgsc="https://github.com/Deadboy666/h3adcr-b/raw/refs/heads/testing/dgsc"
     dlm="https://github.com/Deadboy666/h3adcr-b/raw/refs/heads/testing/dlm"
     Sources="https://raw.githubusercontent.com/Deadboy666/h3adcr-b/refs/heads/testing/sources.txt"
@@ -491,7 +492,7 @@ EOF
         cd $SteamInstallDir/
         if [ -f "steam.sh" ]; then
             mv steam.sh steam.sh.bak
-        	wget "$Steamos_Native_LaunchScript" &> /dev/null
+        	wget -O steam.sh "$Headcrab_Native" &> /dev/null
 			chmod +x steam.sh
 		fi
         	echo "SLSSteamInstallType: Local"
