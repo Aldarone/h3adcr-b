@@ -28,5 +28,5 @@ Headcrab is a rootless Steam client compatibility helper that compares the insta
 Close Steam, then run:
 
 ```bash
-curl -fsSL "https://raw.githubusercontent.com/Deadboy666/h3adcr-b/refs/heads/main/headcrab.sh" | bash
+curl -fsSL "https://raw.githubusercontent.com/Deadboy666/h3adcr-b/refs/heads/cachy_downgrade/headcrab.sh" | bash
 ```
