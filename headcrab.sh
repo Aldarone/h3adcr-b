@@ -2,7 +2,7 @@
 set -eu
 
     #Headcrab Compatibile Client Version
-    HeadcrabCompatibleClientVer=1773099986
+    HeadcrabCompatibleClientVer=1773426488
     
     #Paths
     SCRIPT_DIR="$(dirname "$(realpath "$0")")"
