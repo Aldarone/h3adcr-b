@@ -379,11 +379,7 @@ set -eu
     downloadSLSsteam(){
         echo "Downloading Latest SLSsteam.."
         cd $SCRIPT_DIR/
-        wget -O SLSsteam-Any.7z \
-    $(curl -s "https://api.github.com/repos/AceSLS/SLSsteam/releases/latest" \
-    | grep "browser_download_url" \
-    | grep "SLSsteam-Any.7z" \
-    | cut -d '"' -f 4) &> /dev/null
+        wget "https://github.com/AceSLS/SLSsteam/releases/download/20260310103750/SLSsteam-Any.7z"
     }
     
     export_sls(){
