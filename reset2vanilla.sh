@@ -80,7 +80,7 @@ Headcrab_Downgrader_Path=$HOME/.headcrab
     resetlaunch
     PurgeSLSsteam
     echo "Headcrab Despawned Out Of The Enviroment Reloading Save.."
-    wheresteam
+    wheresteam -exitsteam
     }
 
 echo "Headcrab Uninstaller"
