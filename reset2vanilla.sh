@@ -68,10 +68,8 @@ Headcrab_Downgrader_Path=$HOME/.headcrab
 
    PurgeSLSsteam(){
         if [ -d "$FlatpakSLSsteamConfigDir" ]; then
-               #rm -rf "$FlatpakSLSsteamConfigDir"
                rm -rf "$FlatpakSLSsteamInstallDir"
         else
-              #rm -rf "$SLSsteamConfigDir"
               rm -rf "$SLSsteamInstallDir"
             fi
             }
