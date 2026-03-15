@@ -22,7 +22,6 @@ set -eu
     DeckClientManifest="https://raw.githubusercontent.com/Deadboy666/SteamTracking/refs/heads/headcrab-testing/ClientManifest/steam_client_steamdeck_stable_ubuntu12"
 	Headcrab_Native="https://raw.githubusercontent.com/Deadboy666/h3adcr-b-modul3s/refs/heads/testing/headcrab_native.sh"
 	Headcrab_Flatpak="https://raw.githubusercontent.com/Deadboy666/h3adcr-b-modul3s/refs/heads/testing/headcrab_flatpak.sh"
-    dgsc="https://github.com/Deadboy666/h3adcr-b/raw/refs/heads/testing/dgsc"
     dlm="https://github.com/Deadboy666/h3adcr-b/raw/refs/heads/testing/dlm"
     Sources="https://raw.githubusercontent.com/Deadboy666/h3adcr-b-modul3s/refs/heads/testing/sources.txt"
 	Headcrab_Updater="https://raw.githubusercontent.com/Deadboy666/h3adcr-b/refs/heads/testing/headcrab.desktop"
@@ -243,19 +242,6 @@ set -eu
 	    fi
 	        echo "Client Manifest Downloaded"
     }
-    
-    download_dgsc(){
-        mkdir -p $Headcrab_Downgrader_Path
-        cd $Headcrab_Downgrader_Path/
-        if [ -f "$Headcrab_Downgrader_Path/dgsc" ]; then
-            echo "Headcrab_dgsc Downloaded Already."
-        else
-            echo "Downloading Headcrab_dgsc.."
-            wget "$dgsc" &> /dev/null
-            chmod +x dgsc
-        fi
-          echo "" &> /dev/null
-        }
         
         download_dlm(){
         mkdir -p $Headcrab_Downgrader_Path
@@ -280,11 +266,10 @@ set -eu
         }
         
     dgsc(){
-        download_dgsc
         echo "Running Headcrab_dgsc.."
         wheresteamcfg
         cd package/
-        $Headcrab_Downgrader_Path/dgsc --port 1666 --silent & sleep 1s "$@"
+        python -m http.server 1666 > /dev/null 2>&1 & "$@"
         }
         
     prepdowngrade(){
@@ -388,7 +373,7 @@ set -eu
             echo "Headcrab Connecting to The Updater.."
             export_sls wheresteam -clearbeta -textmode -forcesteamupdate -forcepackagedownload -overridepackageurl "$Headcrab_Downgrade_URL" -exitsteam &> /dev/null
         fi
-            killall dgsc
+            pkill -f 'python -m http.server'
             echo "Compatible Update Applied Via Headcrab_dgsc"
             }
             
