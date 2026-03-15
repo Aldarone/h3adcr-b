@@ -235,14 +235,26 @@ set -eu
             echo "Not present: $local_target"
         fi
     }
-    
+	
+    TrashiteWatMani(){
+		wheresteamcfg
+		cd package/
+		if [ -f "steam_client_steamdeck_stable_ubuntu12.installed"
+			echo "Headcrab Downloading Bazzite-Deck Client Manifest"
+			wget "$DeckClientManifest" &> /dev/null
+		else
+			echo "Headcrab Downloading Bazzite-Desktop Client Manifest"
+			wget "$LinuxClientManifest" &> /dev/null
+		fi
+			echo "" &> /dev/null
+		}
+		
     DownloadClientManifest(){
 	    if steamoscheck; then
 	        echo "Headcrab Downloading Steamos Client Manifest.."
 	        wget "$DeckClientManifest" &> /dev/null
 		elif bazzitecheck; then
-			echo "Headcrab Downloading Steamos Client Manifest.."
-	        wget "$DeckClientManifest" &> /dev/null
+			TrashitewatMani
 	    else
 	        echo "Headcrab Downloading Linux Client Manifest.."
 	        wget "$LinuxClientManifest" &> /dev/null
