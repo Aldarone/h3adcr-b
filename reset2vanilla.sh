@@ -43,9 +43,28 @@ Headcrab_Downgrader_Path=$HOME/.headcrab
         else
                 cd $SteamInstallDir/
             fi
-                rm steam.cfg
-                rm steam.sh
+                revertsteam 
             }
+            
+    revertsteam(){
+      if [ -f steam.cfg ]; then
+        rm steam.cfg
+      else
+        echo "steam.cfg does not exist"
+      fi
+        rm steam.sh
+        purgemillennishit
+        }
+        
+    purgemillennishit(){
+      cd ubuntu12_32/
+      if [ -f "libXtst.so.6" ]; then
+        rm libXtst.so.6
+      else
+        echo "Millennium Not Found"
+      fi
+        echo "" &> /dev/null
+        }
 
    PurgeSLSsteam(){
         if [ -d "$FlatpakSLSsteamConfigDir" ]; then
