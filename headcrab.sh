@@ -95,10 +95,16 @@ set -eu
 	BazziteClientCheck(){
         if [ -f "steam_client_steamdeck_stable_ubuntu12.manifest" ]; then
             versionnumber=$(grep '"version"' steam_client_steamdeck_stable_ubuntu12.manifest | awk -F'"' '{print $4}')
-            echo "SteamClientChannel: Stable"
-        else
+            echo "SteamClientChannel: Stable (Bazzite-Deck)"
+        elif [ -f steam_client_steamdeck_publicbeta_ubuntu12.manifest ]; then
             versionnumber=$(grep '"version"' steam_client_steamdeck_publicbeta_ubuntu12.manifest | awk -F'"' '{print $4}')
-            echo "SteamClientChannel: Beta"
+            echo "SteamClientChannel: Beta (Bazzite-Deck)"
+		elif [ -f "steam_client_ubuntu12.manifest" ]; then
+            versionnumber=$(grep '"version"' steam_client_ubuntu12.manifest | awk -F'"' '{print $4}')
+            echo "SteamClientChannel: Stable (Bazzite-Desktop)"
+		else
+            versionnumber=$(grep '"version"' steam_client_publicbeta_ubuntu12.manifest | awk -F'"' '{print $4}')
+            echo "SteamClientChannel: Beta (Bazzite-Desktop)"
         fi
             echo "SteamClientType: Bazzite"
         }
