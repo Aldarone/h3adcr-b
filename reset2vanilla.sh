@@ -59,6 +59,7 @@ Headcrab_Downgrader_Path=$HOME/.headcrab
     purgemillennishit(){
       cd ubuntu12_32/
       if [ -f "libXtst.so.6" ]; then
+        echo "Unlinking Millennium"
         rm libXtst.so.6
       else
         echo "Millennium Not Found"
