@@ -9,7 +9,24 @@ SLSsteamInstallDir=$HOME/.local/share/SLSsteam
 SLSsteamConfigDir=$HOME/.config/SLSsteam
 Headcrab_Downgrader_Path=$HOME/.headcrab
 
-
+  read_os_release(){
+        local f
+        OS_ID=""
+        OS_ID_LIKE=""
+        for f in /etc/os-release /usr/lib/os-release; do
+            [ -r "$f" ] || continue
+            . "$f"
+            break
+        done
+        OS_ID=${ID:-}
+        OS_ID_LIKE=${ID_LIKE:-}
+    }
+    
+  bazzitecheck(){
+        read_os_release
+        [ "$OS_ID" = "bazzite" ]
+        }
+        
   wheresteam(){
         if [ -d "$FlatpakSteamInstallDir" ]; then
                 flatpak run com.valvesoftware.Steam "$@"
